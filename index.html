@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inicio de Sesión y Registro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <!-- Formulario de Inicio de Sesión -->
+        <div class="form-container">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" method="post" action="login.php">
+                <label for="loginEmail">Correo electrónico:</label>
+                <input type="email" id="loginEmail" name="email" placeholder="Tu correo" required>
+                <label for="loginPassword">Contraseña:</label>
+                <input type="password" id="loginPassword" name="password" placeholder="Tu contraseña" required>
+                <input type="submit" value="Iniciar Sesión">
+            </form>
+        </div>
+
+        <!-- Formulario de Registro -->
+        <div class="form-container">
+            <h2>Registro</h2>
+            <form id="registerForm" method="post" action="register.php">
+                <label for="registerName">Nombre:</label>
+                <input type="text" id="registerName" name="name" placeholder="Tu nombre" required>
+                <label for="registerEmail">Correo electrónico:</label>
+                <input type="email" id="registerEmail" name="email" placeholder="Tu correo" required>
+                <label for="registerPassword">Contraseña:</label>
+                <input type="password" id="registerPassword" name="password" placeholder="Tu contraseña" required>
+                <label for="registerPhone">Teléfono (opcional):</label>
+                <input type="text" id="registerPhone" name="phone" placeholder="Tu teléfono">
+                <input type="submit" value="Registrarse">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
