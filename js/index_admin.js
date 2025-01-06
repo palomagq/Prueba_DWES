@@ -93,14 +93,16 @@ const cancelAddClient = document.getElementById('cancelAddClient');
                         const surname = row.querySelector('td:nth-child(3)').textContent.trim();
                         const email = row.querySelector('td:nth-child(4)').textContent.trim();
                         const phone = row.querySelector('td:nth-child(5)').textContent.trim();
+                        const id = row.querySelector('td:nth-child(1)').textContent.trim();
 
-                        console.log("Datos extraídos de la fila:", name, surname, email, phone);
+                        console.log("Datos extraídos de la fila:", name, surname, email, phone,id);
 
                         // Asignar los valores al formulario
                         document.getElementById('editName').value = name;
                         document.getElementById('editSurname').value = surname;
                         document.getElementById('editEmail').value = email;
                         document.getElementById('editPhone').value = phone;
+                        document.getElementById('editId').value = id;
 
                         // Abrir el modal
                         editModalClient.classList.add('active');
@@ -124,6 +126,8 @@ const cancelAddClient = document.getElementById('cancelAddClient');
                     const updatedSurname = document.getElementById('editSurname').value;
                     const updatedEmail = document.getElementById('editEmail').value;
                     const updatedPhone = document.getElementById('editPhone').value;
+                    const updatedId = document.getElementById('editId').value;
+console.log(updatedId)
 
                     console.log("Datos actualizados del formulario:", updatedName, updatedSurname, updatedEmail, updatedPhone);
 
@@ -144,6 +148,7 @@ const cancelAddClient = document.getElementById('cancelAddClient');
                                     surname: updatedSurname,
                                     phone: updatedPhone,
                                     email: updatedEmail,
+                                    id: updatedId,
                                 }),
                             })
                             .then(response => response.json())
@@ -191,10 +196,11 @@ const cancelAddClient = document.getElementById('cancelAddClient');
                         e.preventDefault();
                         // Asegurarnos de que hay una fila seleccionada
                         if (!selectedRow) {
-                            console.error("No se encontró la fila seleccionada para actualizar.");
+                            console.error("No se encontró la fila seleccionada para eliminar.");
                             return;
                         }
                         id = selectedRow.querySelector('td:nth-child(1)').textContent;
+                        console.log('id '+ id)
 
                         // Enviar los datos al servidor
                         fetch('/prueba_DWES/CasesUses/ajax_handler_user.php', {
@@ -224,7 +230,7 @@ const cancelAddClient = document.getElementById('cancelAddClient');
                         selectedRow = null;
     
                         // Cerrar el modal
-                        editModalClient.classList.remove('active');
+                        deleteModalClient.classList.remove('active');
                     });
 
                 // Cerrar modales (editar y eliminar)
@@ -306,13 +312,15 @@ document.querySelectorAll('.edit-btn-item').forEach(btn => {
         const name = row.querySelector('td:nth-child(2)').textContent.trim();
         const price = row.querySelector('td:nth-child(3)').textContent.trim();
         const description = row.querySelector('td:nth-child(4)').textContent.trim();
+        const id = row.querySelector('td:nth-child(1)').textContent.trim();
 
-        console.log("Datos extraídos de la fila:", name, price, description);
+        console.log("Datos extraídos de la fila:", name, price, description,id);
 
         // Asignar los valores al formulario
         document.getElementById('editNameItem').value = name;
         document.getElementById('editPrice').value = price;
         document.getElementById('editDescription').value = description;
+        document.getElementById('editItemId').value = id;
 
         // Abrir el modal
         editModalItem.classList.add('active');
@@ -335,8 +343,9 @@ document.getElementById('editFormItem').addEventListener('submit', function (e) 
     const updatedNameItem = document.getElementById('editNameItem').value;
     const updatedPrice = document.getElementById('editPrice').value;
     const updatedDewscription = document.getElementById('editDescription').value;
+    const updatedId = document.getElementById('editItemId').value;
 
-    console.log("Datos actualizados del formulario:", updatedNameItem, updatedPrice, updatedDewscription);
+    console.log("Datos actualizados del formulario:", updatedNameItem, updatedPrice, updatedDewscription,updatedId);
 
     // Actualizar los datos en la fila seleccionada
     selectedRowItem.querySelector('td:nth-child(2)').textContent = updatedNameItem;
@@ -353,6 +362,7 @@ document.getElementById('editFormItem').addEventListener('submit', function (e) 
                     name: updatedNameItem,
                     price: updatedPrice,
                     description: updatedDewscription,
+                    id: updatedId,
                 }),
             })
             .then(response => response.json())
@@ -404,7 +414,7 @@ document.getElementById('editFormItem').addEventListener('submit', function (e) 
             return;
         }
         id = selectedRowItem.querySelector('td:nth-child(1)').textContent;
-
+        
         // Enviar los datos al servidor
         fetch('/prueba_DWES/CasesUses/ajax_handler_item.php', {
             method: 'POST',
@@ -433,7 +443,7 @@ document.getElementById('editFormItem').addEventListener('submit', function (e) 
         selectedRowItem = null;
 
         // Cerrar el modal
-        editModalItem.classList.remove('active');
+        deleteModalItem.classList.remove('active');
     });
 
 // Cerrar modales (editar y eliminar)

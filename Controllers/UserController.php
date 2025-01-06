@@ -4,7 +4,7 @@
 session_start();
 
 // Importar la conexión a la base de datos
-require_once 'db.php';
+require_once '../db.php';
 
 class UserController {
     // Crear un nuevo usuario
@@ -24,7 +24,7 @@ class UserController {
     }
 
     // Modificar un usuario
-    public function updateClient($name, $surname, $telephone, $email) {
+    public function updateClient($name, $surname, $telephone, $email,$id) {
         // Verificar si el usuario está autenticado y tiene permisos de administrador
        /* if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
             header("Location: login.php");
@@ -32,9 +32,9 @@ class UserController {
         }*/
 
         global $pdo;
-        $sql = "UPDATE users SET name = ?, surname = ?, telephone = ?, email = ? WHERE email = ?";
+        $sql = "UPDATE users SET name = ?, surname = ?, telephone = ?, email = ? WHERE id = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$name, $surname, $telephone, $email, $email]);
+        $stmt->execute([$name, $surname, $telephone, $email, $id]);
     }
 
     // Eliminar un usuario

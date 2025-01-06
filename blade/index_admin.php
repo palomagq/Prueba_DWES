@@ -43,11 +43,27 @@ $items = getItems($pdo);
 </head>
 <body>
     <!-- Barra de navegación -->
+     
     <nav class="navbar">
         <div class="nav-links">
             <a href="#" id="showClients">Clientes</a>
             <a href="#" id="showItems">Artículos</a>
         </div>
+
+        <!-- boton cerrar sesion-->
+        <div class="d-flex flex-row order-lg-last align-items-center">
+            <button 
+                class="btn btn-outline-dark flex-center navbar-toggler order-last collapsed" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbar" 
+                aria-expanded="false" 
+                aria-controls="navbar" 
+                onclick="window.location.href='login.php'">
+                <i class=""></i> Cerrar Sesión
+            </button>
+        </div>
+        
         <div class="profile">
             <span>Admin</span>
         </div>
@@ -153,6 +169,7 @@ $items = getItems($pdo);
                     <button class="close-btn" id="closeEditModalClient">&times;</button>
                 </div>
                 <form id="editFormClient">
+                    <input type="hidden" id="editId">
                         <div class="row">
                             <div class="field-group">
                                 <label for="editName">Nombre:</label>
@@ -235,10 +252,8 @@ $items = getItems($pdo);
             <!-- Botón para añadir item -->
             <button class="add-item-btn" id="addItemBtn">+</button>
 
-        
 
     <!-- Modales -->
-
 
             <!-- Modal Añadir Item -->
             <div class="modal" id="addItemModal">
@@ -283,6 +298,8 @@ $items = getItems($pdo);
                     <button class="close-btn" id="closeEditModalItem">&times;</button>
                 </div>
                 <form id="editFormItem">
+                <input type="hidden" id="editItemId">
+
                         <div class="row">
                             <div class="field-group">
                                 <label for="editNameItem">Nombre:</label>
@@ -317,19 +334,13 @@ $items = getItems($pdo);
                     <h2>Eliminar Articulo</h2>
                     <button class="close-btn" id="closeDeleteModalItem">&times;</button>
                 </div>
-                <p>¿Está seguro de que desea eliminar este cliente?</p>
+                <p>¿Está seguro de que desea eliminar este artículo?</p>
                 <div class="modal-footer">
                     <button class="accept-btn"  type="submit" id="deleteItem">Aceptar</button>
                     <button class="cancel-btn" id="cancelDeleteModalItem">Cancelar</button>
                 </div>
             </div>
         </div>
-
-            <!-- Scripts -->
-        <script>
-
-        </script>
-
 
 
 
@@ -357,5 +368,7 @@ $items = getItems($pdo);
             document.getElementById('itemsTable').style.display = 'block';
         });
     </script>
+
+
 </body>
 </html>

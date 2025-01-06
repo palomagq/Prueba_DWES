@@ -16,9 +16,9 @@ if ($data && isset($data['action'])) {
         // Llamar a la función del controlador pasando los datos
         switch ($action) {
             case 'updateItem':
-                if (isset($data['name'], $data['price'], $data['description'])) {
+                if (isset($data['id'],$data['name'], $data['price'], $data['description'])) {
                     // Llamar a updateItem con los datos necesarios
-                    $controller->$action($data['name'], $data['price'], $data['description']);
+                    $controller->$action($data['name'], $data['price'], $data['description'],$data['id']);
                     echo json_encode(['status' => 'success', 'message' => 'Articulo actualizado correctamente']);
                     exit();
                 } else {
@@ -30,10 +30,10 @@ if ($data && isset($data['action'])) {
                     if (isset($data['id'])) {
                         // Llamar a deleteItem con los datos necesarios
                         $controller->$action($data['id']);
-                        echo json_encode(['status' => 'success', 'message' => 'Usuario eliminado correctamente']);
+                        echo json_encode(['status' => 'success', 'message' => 'Articulo eliminado correctamente']);
                         exit();
                     } else {
-                        echo json_encode(['status' => 'error', 'message' => 'Error al eliminar el usuario ']);
+                        echo json_encode(['status' => 'error', 'message' => 'Error al eliminar el articulo ']);
                         exit();
                     }
                     break;

@@ -58,6 +58,21 @@ $users = $stmt2->fetch(PDO::FETCH_ASSOC);
 					 </ul>
 				 </div>
 
+                <!-- boton cerrar sesion-->
+                <div class="d-flex flex-row order-lg-last align-items-center" style="padding-left: 1rem;">
+				 
+                 <button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <ul onclick="window.location.href='login.php'"  class="navbar-nav me-3 me-lg-0 d-flex flex-row align-items-center">
+                     <li class="dropdown search-dropdown nav-item py-lg-3">						 
+                         <a  href="javascript:void(0)" class="btn btn-outline-dark flex-center" type="button" >
+                            <i class=""></i> Cerrar Sesión 
+                         </a>
+                     </li>
+                 </ul>
+             </div>
+
 				 <div id="navbar" class="navbar-collapse collapse">
 
 					 <ul class="navbar-nav me-auto mb-4 mb-lg-0 ms-lg-5">

@@ -1,4 +1,5 @@
 <?php
+
 require_once '../Controllers/UserController.php';
 
 // Leer el cuerpo JSON de la solicitud
@@ -16,9 +17,9 @@ if ($data && isset($data['action'])) {
         // Llamar a la función del controlador pasando los datos
         switch ($action) {
             case 'updateClient':
-                if (isset($data['name'], $data['surname'], $data['phone'], $data['email'])) {
+                if (isset($data['id'],$data['name'], $data['surname'], $data['phone'], $data['email'])) {
                     // Llamar a updateClient con los datos necesarios
-                    $controller->$action($data['name'], $data['surname'], $data['phone'], $data['email']);
+                    $controller->$action($data['name'], $data['surname'], $data['phone'], $data['email'],$data['id']);
                     echo json_encode(['status' => 'success', 'message' => 'Usuario actualizado correctamente']);
                     exit();
                 } else {
@@ -33,7 +34,7 @@ if ($data && isset($data['action'])) {
                         echo json_encode(['status' => 'success', 'message' => 'Usuario eliminado correctamente']);
                         exit();
                     } else {
-                        echo json_encode(['status' => 'error', 'message' => 'Error al eliminart el usuario ']);
+                        echo json_encode(['status' => 'error', 'message' => 'Error al eliminar el usuario ']);
                         exit();
                     }
                     break;

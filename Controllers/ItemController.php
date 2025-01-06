@@ -3,7 +3,7 @@
 session_start();
 
 // Importar la conexión a la base de datos
-require_once 'db.php';
+require_once '../db.php';
 
 class ItemController {
     // Crear un nuevo ítem
@@ -21,7 +21,7 @@ class ItemController {
     }
 
     // Modificar un ítem
-    public function updateItem($id, $name, $price, $description) {
+    public function updateItem($name, $price, $description,$id) {
         // Verificar si el usuario está autenticado y tiene permisos de administrador
         /*if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
             header("Location: login.php");

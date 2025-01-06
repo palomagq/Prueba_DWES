@@ -1,5 +1,9 @@
 <?php
+
 session_start();
+
+unset($_SESSION['user_id']);
+unset($_SESSION['role']);
 
 // Procesar el formulario de inicio de sesión
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
