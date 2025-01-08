@@ -203,3 +203,6 @@ table {
     background-color: #f44336;
     color: #fff;
 }
+.hidden {
+    display: none;
+}
