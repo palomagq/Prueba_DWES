@@ -250,7 +250,7 @@ $items = getItems($pdo);
     </div>
 
             <!-- Botón para añadir item -->
-            <button class="add-item-btn" id="addItemBtn">+</button>
+            <button class="hidden add-item-btn" id="addItemBtn">+</button>
 
 
     <!-- Modales -->
@@ -361,11 +361,17 @@ $items = getItems($pdo);
         document.getElementById('showClients').addEventListener('click', function() {
             document.getElementById('clientsTable').style.display = 'block';
             document.getElementById('itemsTable').style.display = 'none';
+            document.getElementById('addClientBtn').classList.toggle('hidden');
+            document.getElementById('addItemBtn').classList.toggle('hidden');
+
         });
 
         document.getElementById('showItems').addEventListener('click', function() {
             document.getElementById('clientsTable').style.display = 'none';
             document.getElementById('itemsTable').style.display = 'block';
+            document.getElementById('addClientBtn').classList.toggle('hidden');
+            document.getElementById('addItemBtn').classList.toggle('hidden');
+
         });
     </script>
 
